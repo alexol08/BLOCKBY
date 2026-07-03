@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 
-from backend.ai import INSTRUCTION_SCHEMA, PROJECT_BRIEF_SCHEMA, call_openai_json
+from backend.ai import HELP_SCHEMA, INSTRUCTION_SCHEMA, PROJECT_BRIEF_SCHEMA, call_openai_json
 from backend.instructions import fallback_help, fallback_instruction_book
 from backend.models import (
     HelpRequest,
@@ -324,7 +324,23 @@ def help_with_build(request: HelpRequest) -> dict[str, Any]:
             "whenToStop": "Stop if the project involves unsafe or restricted materials.",
             "safety": safety.to_dict(),
         }
-    return fallback_help(request.question, request.context)
+    instructions = "\n".join([
+        "You are Blockyby's instruction-book help assistant.",
+        "Answer the builder's question using the current instruction page, project brief, sourcing plan, and chat history.",
+        "Keep advice practical, step-by-step, reversible, and safe. Never give hazardous or restricted instructions.",
+        "Return only the provided JSON schema.",
+    ])
+    try:
+        result = call_openai_json(
+            instructions=instructions,
+            input_data={"question": request.question, "context": request.context},
+            schema=HELP_SCHEMA,
+        )
+        return result or fallback_help(request.question, request.context)
+    except Exception as exc:
+        result = fallback_help(request.question, request.context)
+        result["_aiError"] = str(exc)
+        return result
 
 
 @app.get("/api/projects")

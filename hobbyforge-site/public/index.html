@@ -9,14 +9,6 @@
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <a class="brand" href="#top" aria-label="Blockyby home">
-        <span class="brand-mark">B</span>
-        <span>
-          <strong>Blockyby</strong>
-          <span class="brand-subtitle">project builder</span>
-        </span>
-      </a>
-
       <nav class="side-nav" aria-label="Workflow">
         <button class="nav-link active" data-target="profileSection">01 Profile</button>
         <button class="nav-link" data-target="studioSection">02 Project studio</button>
@@ -184,6 +176,24 @@
           <button class="ghost-btn" id="nextPageBtn">Next page</button>
         </div>
         <div id="bookOutput" class="book-view empty-state">No instruction book yet.</div>
+        <div class="help-panel" id="bookHelpPanel">
+          <div class="section-heading compact">
+            <span class="step">?</span>
+            <div>
+              <h3>Build help chatbot</h3>
+              <p>Ask about the current instruction page, missing parts, checks, or what to try next.</p>
+            </div>
+          </div>
+          <div class="chat-log help-log" id="helpLog" aria-live="polite"></div>
+          <label>Ask the instruction helper
+            <textarea id="helpInput" rows="3" placeholder="Example: I do not understand this step, what should I check first?"></textarea>
+          </label>
+          <div class="button-row">
+            <button id="askHelpBtn">Ask help</button>
+            <button class="ghost-btn" id="useHelpPromptBtn">Use page prompt</button>
+            <button class="ghost-btn" id="clearHelpBtn">Clear help chat</button>
+          </div>
+        </div>
       </section>
 
       <section class="panel" id="simulationSection">

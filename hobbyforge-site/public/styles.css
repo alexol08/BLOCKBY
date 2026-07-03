@@ -132,30 +132,6 @@ h4 { font-size: 15px; font-weight: 700; }
   overflow: auto;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--sidebar-text);
-  text-decoration: none;
-  padding: 8px 0 12px;
-  border-bottom: 1px solid rgba(255, 253, 248, 0.12);
-}
-
-.brand-mark {
-  width: 30px;
-  height: 30px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(255, 253, 248, 0.24);
-  border-radius: 8px;
-  color: var(--sidebar-text);
-  font-weight: 760;
-}
-
-.brand strong { display: block; font-size: 16px; }
-.brand-subtitle { display: block; color: var(--sidebar-muted); font-size: 13px; }
-
 .side-nav { display: grid; gap: 4px; }
 
 .nav-link {
@@ -509,6 +485,24 @@ h4 { font-size: 15px; font-weight: 700; }
 .book-lists ul, .brief-card ul {
   margin: 8px 0 0;
   padding-left: 18px;
+}
+
+.help-panel {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-muted);
+}
+
+.help-panel .section-heading { margin-bottom: 0; }
+.help-panel h4 { margin: 0; }
+.help-panel p { margin: 2px 0 0; }
+
+.help-log {
+  max-height: 260px;
+  margin-top: 0;
 }
 
 .step-diagram {

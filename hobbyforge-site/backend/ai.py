@@ -209,3 +209,21 @@ INSTRUCTION_SCHEMA = {
         },
     },
 }
+
+
+HELP_SCHEMA = {
+    "name": "build_help",
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["safe", "diagnosis", "nextChecks", "likelyCauses", "recommendedAction", "whenToStop"],
+        "properties": {
+            "safe": {"type": "boolean"},
+            "diagnosis": {"type": "string"},
+            "nextChecks": {"type": "array", "items": {"type": "string"}},
+            "likelyCauses": {"type": "array", "items": {"type": "string"}},
+            "recommendedAction": {"type": "string"},
+            "whenToStop": {"type": "string"},
+        },
+    },
+}

@@ -9,6 +9,7 @@ const state = {
   brief: loadLocal("blockyby.brief", null),
   sourcing: loadLocal("blockyby.sourcing", null),
   instructions: loadLocal("blockyby.instructions", null),
+  helpMessages: loadLocal("blockyby.helpMessages", []),
   currentPage: 0,
   projects: []
 };
@@ -574,6 +575,45 @@ function renderDiagram(diagram) {
   `;
 }
 
+function renderHelpMessages() {
+  const log = $("#helpLog");
+  if (!log) return;
+  if (!state.helpMessages.length) {
+    const message = currentInstructionPage()
+      ? "Ask for help with the current instruction page."
+      : "Generate the instruction book, then ask the chatbot about any page.";
+    log.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
+    return;
+  }
+  log.innerHTML = state.helpMessages.map((message) => `
+    <div class="chat-message ${escapeHtml(message.role)}">
+      <strong>${message.role === "user" ? "You" : "Build helper"}</strong>
+      <div>${nl2br(message.content)}</div>
+    </div>
+  `).join("");
+  log.scrollTop = log.scrollHeight;
+}
+
+function formatHelpReply(result) {
+  const checks = (result.nextChecks || []).map((item) => `- ${item}`).join("\n");
+  const causes = (result.likelyCauses || []).map((item) => `- ${item}`).join("\n");
+  return [
+    result.diagnosis,
+    checks ? `Next checks:\n${checks}` : "",
+    causes ? `Likely causes:\n${causes}` : "",
+    result.recommendedAction ? `Recommended action:\n${result.recommendedAction}` : "",
+    result.whenToStop ? `When to stop:\n${result.whenToStop}` : "",
+    result._aiError ? `AI fallback used: ${result._aiError}` : ""
+  ].filter(Boolean).join("\n\n");
+}
+
+function currentInstructionPage() {
+  const pages = state.instructions?.pages || [];
+  if (!pages.length) return null;
+  const index = Math.max(0, Math.min(state.currentPage, pages.length - 1));
+  return pages[index];
+}
+
 function renderInstructions() {
   const out = $("#bookOutput");
   const book = state.instructions;
@@ -613,9 +653,9 @@ function renderInstructions() {
         <div><h4>Actions</h4><ul>${(page.actions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
         <div><h4>Checks</h4><ul>${(page.checks || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
       </div>
-      <div class="result-box"><strong>Help prompt:</strong> ${escapeHtml(page.helpPrompt || "Ask for help with this page.")}</div>
     </article>
   `;
+  renderHelpMessages();
 }
 
 async function generateInstructions() {
@@ -641,6 +681,57 @@ async function generateInstructions() {
   } finally {
     setBusy(button, false);
   }
+}
+
+async function askInstructionHelp() {
+  const input = $("#helpInput");
+  const button = $("#askHelpBtn");
+  const page = currentInstructionPage();
+  const question = input?.value.trim() || page?.helpPrompt || "Help me with this instruction page.";
+  if (!state.instructions || !page) {
+    toast("Generate the instruction book first.", "warn");
+    return;
+  }
+  setBusy(button, true, "Asking...");
+  try {
+    state.helpMessages.push({ role: "user", content: question });
+    renderHelpMessages();
+    const result = await api("/api/help", {
+      question,
+      context: {
+        profile: currentProfileFromForm(),
+        brief: state.brief,
+        sourcing: state.sourcing,
+        instructions: state.instructions,
+        currentPage: page,
+        messages: state.helpMessages.slice(-8)
+      }
+    });
+    state.helpMessages.push({ role: "assistant", content: formatHelpReply(result) });
+    saveLocal("blockyby.helpMessages", state.helpMessages);
+    renderHelpMessages();
+    input.value = "";
+    toast(result.safe ? "Build helper replied." : "Help blocked by safety gate.", result.safe ? "ok" : "warn");
+  } catch (error) {
+    toast(error.message, "bad");
+  } finally {
+    setBusy(button, false);
+  }
+}
+
+function bindHelpEvents() {
+  $("#askHelpBtn")?.addEventListener("click", askInstructionHelp);
+  $("#useHelpPromptBtn")?.addEventListener("click", () => {
+    const input = $("#helpInput");
+    const page = currentInstructionPage();
+    if (input && page) input.value = page.helpPrompt || "";
+  });
+  $("#clearHelpBtn")?.addEventListener("click", () => {
+    state.helpMessages = [];
+    saveLocal("blockyby.helpMessages", []);
+    renderHelpMessages();
+    toast("Help chat cleared.", "warn");
+  });
 }
 
 async function saveProject() {
@@ -753,6 +844,7 @@ function bindEvents() {
   $("#instructionsBtn").addEventListener("click", generateInstructions);
   $("#prevPageBtn").addEventListener("click", () => { state.currentPage -= 1; renderInstructions(); });
   $("#nextPageBtn").addEventListener("click", () => { state.currentPage += 1; renderInstructions(); });
+  bindHelpEvents();
   $("#saveProjectBtn").addEventListener("click", saveProject);
   $("#loadProjectsBtn").addEventListener("click", loadProjects);
   $("#quickDemoBtn").addEventListener("click", runDemoFlow);
@@ -767,6 +859,7 @@ function boot() {
   renderBrief();
   renderSourcing();
   renderInstructions();
+  renderHelpMessages();
   updateBudgetLabel();
   checkHealth();
   loadProjects();
