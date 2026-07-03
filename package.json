@@ -1,0 +1,17 @@
+{
+  "name": "blockyby-python-site",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Blockyby hackathon site with Python FastAPI backend and vanilla browser frontend.",
+  "scripts": {
+    "start": "python -m uvicorn backend.main:app --host 127.0.0.1 --port 5179",
+    "dev": "python -m uvicorn backend.main:app --host 127.0.0.1 --port 5179 --reload",
+    "test": "python scripts/smoke.py"
+  },
+  "engines": {
+    "python": ">=3.11"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
