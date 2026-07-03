@@ -1,0 +1,30 @@
+{
+  "profiles": [
+    {
+      "id": "profile_3cc89b94d51b",
+      "name": "Local hobbyist",
+      "skills": [
+        "CAD",
+        "3D printing",
+        "soldering"
+      ],
+      "tools": [
+        "Multimeter",
+        "3D printer"
+      ],
+      "materials": [
+        "LEDs",
+        "pla filament"
+      ],
+      "stock": [
+        "LEDs",
+        "pla filament"
+      ],
+      "shippingAddress": "7 Claremont ave, Honeypark, Dublin, Ireland",
+      "notes": "",
+      "updatedAt": "2026-07-02T19:47:56.485866+00:00"
+    }
+  ],
+  "projects": [],
+  "orders": []
+}

@@ -1,63 +1,139 @@
-# Blockyby Python Hackathon Site
+# Blockyby
 
-This is a hackathon-ready rebuild of the Blockyby / HobbyForge idea with a **Python FastAPI backend** and a simple browser frontend.
+Blockyby is an AI-assisted hobby project platform that helps makers plan, source, simulate, build, and publish projects from one place.
 
-The goal is to make the project easier to understand and debug while still keeping the parts that must run in the browser as JavaScript.
+The app is designed for hobbyists who want to turn an idea into a complete build plan. A user can define their skills, tools, materials, stock, and project goals, then use the AI discussion flow to refine the idea, generate a bill of materials, produce guided instructions, and preview supported CAD/EDA assets.
 
-## What this version includes
+> Current app folder: `hobbyforge-site`
 
-- Python backend for project planning, sourcing verification, instruction generation, safety checks, local storage, and mock checkout.
-- Warm cream / beige / woody UI theme.
-- Verified source cards for BOM items.
-- Mock supplier catalogue with supplier name, product description, part numbers, stock, price, and evidence notes.
-- Checkout readiness checks so unverified items cannot be ordered in the demo flow.
-- LEGO-style instruction book with generated SVG diagrams.
-- Simulation Lab with:
-  - schematic block diagram mode by default
-  - raw schematic mode for debugging
-  - PCB viewer
-  - PCB-to-STL export
-  - lightweight STL viewer
-- Built-in sample files.
-- Smoke test script.
-- No frontend framework, so your team can read the code directly.
+---
 
-## Folder map
+## Features
+
+- **Hobbyist profile setup**
+  - Add skills, tools, materials, stock, and notes.
+  - Optionally add shipping details for future ordering workflows.
+  - Import profile-style text or CV-style information with review before saving.
+
+- **AI project discussion**
+  - Discuss and refine a project idea with an LLM-backed planning flow.
+  - Generate structured project briefs.
+  - Optimise project decisions using a cheap-to-best quality slider.
+  - Reuse already-owned tools and materials where possible.
+
+- **Sourcing and BOM planning**
+  - Generate a bill of materials.
+  - Detect possible owned alternatives.
+  - Add compatibility notes and sourcing difficulty.
+  - Keep checkout mocked until real supplier/payment integrations are added.
+
+- **Instruction book generation**
+  - Create LEGO-style step-by-step project instructions.
+  - Include checks, safety notes, and troubleshooting prompts.
+  - Use the build helper when stuck.
+
+- **Simulation Lab**
+  - Preview `.stl` files.
+  - Inspect `.sch` / `.kicad_sch` schematic files.
+  - View `.kicad_pcb` / `.pcb` board files.
+  - Export a simple PCB-to-STL board model.
+  - Extend the simulation system with custom modules.
+
+- **Hosted project library**
+  - Save generated projects locally.
+  - Mark projects as public/private.
+  - Use generated briefs, BOMs, and instructions as publishable project pages.
+
+---
+
+## Tech Stack
+
+- **Runtime:** Node.js
+- **Server:** Native Node HTTP server
+- **Frontend:** HTML, CSS, JavaScript
+- **AI:** OpenAI Responses API-compatible server route
+- **Storage:** Local JSON file store
+- **Simulation:** Browser-based CAD/EDA preview modules
+
+No framework is required for the current version.
+
+---
+
+## Repository Structure
 
 ```text
-hobbyforge-site/
-├── backend/
-│   ├── main.py          # API routes
-│   ├── models.py        # request/data models
-│   ├── store.py         # data/store.json read/write helpers
-│   ├── safety.py        # safety checks
-│   ├── sourcing.py      # BOM generation and source verification
-│   ├── instructions.py  # instruction book and diagram data
-│   └── ai.py            # optional OpenAI structured-output helper
-├── public/
-│   ├── index.html       # page structure
-│   ├── styles.css       # warm woody theme
-│   ├── app.js           # UI, buttons, API calls, rendering
-│   ├── sim.js           # schematic / PCB / STL browser viewer
-│   └── samples/         # demo files
-├── data/
-│   └── store.json       # created automatically
-├── scripts/
-│   └── smoke.py         # static checks
-├── requirements.txt
-├── package.json         # optional npm convenience scripts
-└── .env.example
+blockyby/
+├── README.md
+├── LICENSE
+└── hobbyforge-site/
+    ├── server.mjs
+    ├── package.json
+    ├── public/
+    │   ├── index.html
+    │   ├── app.js
+    │   ├── styles.css
+    │   ├── samples/
+    │   └── sim/
+    ├── scripts/
+    │   └── smoke.mjs
+    └── data/
+        └── store.json
 ```
 
-## Run on Fedora
+---
+
+## Getting Started
+
+### 1. Clone the repository
 
 ```bash
-cd hobbyforge-site
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-python -m uvicorn backend.main:app --reload --port 5179
+git clone https://github.com/BasilAmin/blockyby.git
+cd blockyby/hobbyforge-site
+```
+
+### 2. Install Node.js
+
+The app requires Node.js 18 or newer.
+
+On Fedora:
+
+```bash
+sudo dnf install nodejs
+```
+
+Check your versions:
+
+```bash
+node -v
+npm -v
+```
+
+### 3. Create your `.env` file
+
+Create a `.env` file inside `hobbyforge-site`:
+
+```bash
+nano .env
+```
+
+Add:
+
+```env
+PORT=5179
+
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4.1-mini
+OPENAI_FALLBACK_MODEL=gpt-4o-mini
+
+OPENAI_TIMEOUT_MS=45000
+```
+
+The app can run without `OPENAI_API_KEY`, but it will use local mock responses instead of real AI responses.
+
+### 4. Start the app
+
+```bash
+npm start
 ```
 
 Open:
@@ -66,167 +142,139 @@ Open:
 http://localhost:5179
 ```
 
-You can also use the npm shortcuts if you want:
+### 5. Run the smoke test
 
 ```bash
-npm start
 npm test
 ```
 
-The actual backend is still Python.
+---
 
-## Optional OpenAI setup
+## Using the App
 
-The app works without an API key. It uses local fallback agents.
+1. Open the local site.
+2. Fill in the hobbyist profile with your skills, tools, stock, and materials.
+3. Go to the project discussion area.
+4. Describe the project you want to build.
+5. Adjust the cheap-to-best slider.
+6. Generate a project brief.
+7. Generate sourcing/BOM suggestions.
+8. Generate the instruction book.
+9. Use Simulation Lab to load supported CAD/EDA files.
+10. Save or publish the project locally.
 
-To enable real AI calls, edit `.env`:
+---
 
-```env
-OPENAI_API_KEY=your_key_here
-OPENAI_MODEL=gpt-4.1-mini
-OPENAI_FALLBACK_MODEL=gpt-4o-mini
-```
+## Simulation Lab
 
-Restart the server after editing `.env`.
-
-Then use the **Test API** button in the sidebar.
-
-## How the app works
-
-```text
-Browser UI
-  public/index.html
-  public/styles.css
-  public/app.js
-  public/sim.js
-        ↓ fetch('/api/...')
-Python backend
-  backend/main.py
-        ↓
-Business logic
-  safety.py
-  sourcing.py
-  instructions.py
-  ai.py
-        ↓
-Local JSON storage
-  data/store.json
-```
-
-## What to improve next
-
-### 1. Schematic spaghetti
-
-The default schematic view now uses block diagrams instead of raw wire coordinates. Improve this by building a better netlist parser and grouping blocks by actual connected nets.
-
-Start in:
+The Simulation Lab currently supports lightweight preview and inspection for:
 
 ```text
-public/sim.js
+.stl
+.sch
+.kicad_sch
+.kicad_pcb
+.pcb
 ```
 
-Look for:
-
-```js
-parseSchematic()
-renderSchematicBlock()
-renderSchematicRaw()
-```
-
-### 2. Sourcing verification
-
-The source cards currently use a demo catalogue. Replace this with real supplier adapters later.
-
-Start in:
+Sample files are included in:
 
 ```text
-backend/sourcing.py
+hobbyforge-site/public/samples/
 ```
 
-Look for:
+To test rendering:
 
-```python
-MOCK_CATALOGUE
-find_source_candidates()
-verify_sourcing_plan()
-validate_checkout_items()
-```
+1. Start the app.
+2. Open Simulation Lab.
+3. Choose **Load asset**.
+4. Select one of the sample files.
 
-### 3. Instruction diagrams
+### PCB to CAD
 
-Instruction diagrams are generated as JSON and rendered as SVG. This is easier to debug than generating image files.
+The app includes a basic PCB-to-STL export path. This is intended as a starting point, not a production-grade mechanical CAD export.
 
-Backend data starts in:
+Future improvements could include:
 
-```text
-backend/instructions.py
-```
+- KiCad parser improvements
+- STEP export
+- GLTF export
+- 3D component models
+- WebGL or Three.js rendering
+- SPICE-style schematic simulation
+- ERC/DRC checks
 
-Frontend rendering starts in:
+---
 
-```text
-public/app.js
-```
+## OpenAI API Notes
 
-Look for:
+The OpenAI key is loaded server-side from `.env`.
 
-```js
-renderDiagram()
-renderInstructions()
-```
+Do not put your API key in frontend files.
 
-### 4. UI theme
+The app includes:
 
-The warm theme is mostly CSS variables.
+- `/api/health`
+- `/api/ai/test`
+- AI routes for project discussion, sourcing, instructions, and help
+- local fallback responses when no API key is configured
 
-Start in:
-
-```text
-public/styles.css
-```
-
-Look for:
-
-```css
-:root
-```
-
-### 5. Ordering and safety
-
-The app creates mock orders only. This is intentional for the hackathon. It refuses checkout if source verification is incomplete.
-
-Start in:
-
-```text
-backend/main.py
-backend/sourcing.py
-backend/safety.py
-public/app.js
-```
-
-Look for:
-
-```python
-create_order()
-validate_checkout_items()
-evaluate_action_safety()
-```
-
-and:
-
-```js
-canCheckout()
-createMockOrder()
-```
-
-## Smoke test
+After changing `.env`, restart the server:
 
 ```bash
-python scripts/smoke.py
+npm start
 ```
 
-This checks that core files exist and Python backend files compile. If the server is running, it also checks `/api/health`.
+Then use the **Test API** button in the app sidebar.
 
-## Notes
+---
 
-This is not production checkout, not production EDA simulation, and not production CAD export. It is meant to be readable, editable, and demo-friendly.
+## Safety Notes
+
+Blockyby is designed for safe hobby projects.
+
+The starter includes a safety gate that blocks restricted or hazardous projects before sourcing or instruction generation. Keep this protection enabled if the app is used by younger users, public users, or school/community groups.
+
+The app should not be used to generate instructions or sourcing workflows for dangerous, illegal, or age-restricted projects.
+
+---
+
+## Roadmap
+
+- [ ] Real supplier integrations
+- [ ] Reviewed cart and checkout flow
+- [ ] User accounts
+- [ ] Cloud project hosting
+- [ ] Rich public project pages
+- [ ] WebGL CAD viewer
+- [ ] Better STL/STEP/GLTF support
+- [ ] KiCad-native PCB parsing
+- [ ] Schematic simulation
+- [ ] Component compatibility agent
+- [ ] Community remix/fork system
+- [ ] Project comments and build logs
+- [ ] Image uploads for troubleshooting
+
+---
+
+## Development
+
+Start the local server:
+
+```bash
+npm start
+```
+
+Run tests:
+
+```bash
+npm test
+```
+
+The app intentionally uses a simple Node/HTML/CSS/JS stack so it is easy to inspect, modify, and extend.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
