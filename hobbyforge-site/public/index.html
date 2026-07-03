@@ -24,7 +24,6 @@
         <button class="nav-link" data-target="bookSection">04 Instruction book</button>
         <button class="nav-link" data-target="simulationSection">05 Simulation lab</button>
         <button class="nav-link" data-target="librarySection">06 Project library</button>
-        <button class="nav-link" data-target="learnSection">Learn the code</button>
       </nav>
 
       <div class="status-stack">
@@ -47,7 +46,6 @@
         </div>
         <div class="intro-actions">
             <button id="quickDemoBtn">Run demo flow</button>
-            <button class="ghost-btn" data-target="learnSection">How it works</button>
         </div>
       </section>
 
@@ -235,33 +233,6 @@
         <div id="libraryOutput" class="library-grid empty-state">No saved projects loaded.</div>
       </section>
 
-      <section class="panel learn" id="learnSection">
-        <div class="section-heading">
-          <span class="step">?</span>
-          <div>
-            <h2>How the software is split</h2>
-            <p>This panel is built into the app so your hackathon team can explain and debug the architecture.</p>
-          </div>
-        </div>
-        <div class="learn-grid">
-          <div>
-            <h3>Frontend JavaScript</h3>
-            <p><code>public/app.js</code> reads forms, sends <code>fetch()</code> requests, and renders cards. <code>public/sim.js</code> parses and draws CAD/EDA assets in the browser.</p>
-          </div>
-          <div>
-            <h3>Python backend</h3>
-            <p><code>backend/main.py</code> defines API routes. <code>sourcing.py</code> verifies source cards. <code>safety.py</code> blocks unsafe flows. <code>instructions.py</code> generates diagram data.</p>
-          </div>
-          <div>
-            <h3>Data</h3>
-            <p><code>data/store.json</code> stores profiles, projects, and mock orders. It is simple on purpose so you can inspect it while debugging.</p>
-          </div>
-          <div>
-            <h3>Debugging order</h3>
-            <p>Open DevTools Console for browser errors. Use Network tab for API errors. Use the terminal for Python traceback messages.</p>
-          </div>
-        </div>
-      </section>
     </main>
   </div>
 

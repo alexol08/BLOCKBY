@@ -619,24 +619,6 @@ h4 { font-size: 15px; font-weight: 700; }
 
 .project-card p { margin: 0; }
 
-.learn-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.learn-grid > div {
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-muted);
-}
-
-.learn-grid p {
-  margin-bottom: 0;
-  line-height: 1.55;
-}
-
 .toast {
   position: fixed;
   right: 16px;
@@ -678,7 +660,7 @@ h4 { font-size: 15px; font-weight: 700; }
 
 @media (max-width: 720px) {
   .main, .sidebar { padding: 12px; }
-  .book-lists, .brief-grid, .learn-grid { grid-template-columns: 1fr; }
+  .book-lists, .brief-grid { grid-template-columns: 1fr; }
   .button-row > button,
   .intro-actions > button,
   .sim-toolbar > button,
