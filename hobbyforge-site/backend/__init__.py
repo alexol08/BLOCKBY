@@ -1,1 +1,0 @@
-"""Blockyby Python backend package."""
