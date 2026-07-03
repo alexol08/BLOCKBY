@@ -1,0 +1,1290 @@
+{
+  "profiles": [
+    {
+      "id": "profile_7c8dba5127a3",
+      "name": "Local hobbyist",
+      "skills": [
+        "Python",
+        "soldering"
+      ],
+      "tools": [
+        "multimeter",
+        "soldering iron"
+      ],
+      "materials": [
+        "PLA",
+        "MPU6050",
+        "arduino uno",
+        "arduino mega"
+      ],
+      "stock": [
+        "PLA",
+        "MPU6050",
+        "arduino uno",
+        "arduino mega"
+      ],
+      "shippingAddress": "",
+      "notes": "",
+      "updatedAt": "2026-07-03T09:30:50.865082+00:00"
+    }
+  ],
+  "projects": [
+    {
+      "id": "project_4ebc1c86313d",
+      "title": "Automated Night-Activated Lamp",
+      "brief": {
+        "safe": true,
+        "reply": "Your idea for a lamp that turns on at night is safe and feasible for a hobbyist with your skills and tools. To validate it effectively and make the first version realistic, let's consider how to detect night (ambient light levels or time) and control the lamp with your existing hardware.",
+        "projectName": "Automated Night-Activated Lamp",
+        "summary": "Create a lamp that automatically turns on when it becomes dark, using your Arduino (Uno or Mega) to detect ambient light levels and control power to the lamp.",
+        "feasibilityScore": 8,
+        "costStrategy": "Leverage owned Arduino Uno or Mega and add a simple light sensor (photoresistor or photodiode) to minimize new costs. Use your soldering skills and PLA for a simple enclosure/fittings. Keep electrical loads low or use a relay module for safety.",
+        "coreRequirements": [
+          "Arduino Uno or Mega (owned)",
+          "Light sensor (photoresistor or photodiode)",
+          "Relay module or transistor to switch lamp power safely",
+          "Lamp or LED light source",
+          "Power supply compatible with lamp",
+          "Wiring and soldering materials",
+          "Optional: 3D printed enclosure using PLA"
+        ],
+        "assumptions": [
+          "You have or can acquire a light sensor inexpensively.",
+          "The lamp power is low voltage or you use a relay module for AC mains switching.",
+          "You can code basic Arduino sketches to read sensor data and control outputs.",
+          "You have access to safe power supplies matching your lamp.",
+          "PLA printing is for enclosure/fixture only, no direct electrical parts."
+        ],
+        "questions": [
+          "What kind of lamp or light source do you intend to use (LED strip, bulb, etc.)?",
+          "Will the lamp be powered by mains electricity or low voltage DC?",
+          "Do you already have a light sensor or should I suggest low-cost options?",
+          "How much time do you want to spend on coding versus hardware setup?",
+          "Are you comfortable working with mains voltage if applicable, or do you want to keep it low voltage?",
+          "Is this lamp intended for indoor or outdoor use?"
+        ],
+        "riskFlags": [
+          "Working with mains voltage requires care and may need a relay or a certified power module.",
+          "Ensure relay or switching components match lamp voltage and current.",
+          "Avoid permanent wiring changes that could be hazardous without proper expertise."
+        ],
+        "compatibilityChecklist": [
+          "Arduino Uno or Mega is compatible with analog light sensors easily.",
+          "Photoresistors or photodiodes can connect directly to Arduino analog input pins.",
+          "Relay modules or transistor switches can safely control lamp power when properly used.",
+          "PLA can be 3D printed into simple holders or enclosures to tidy components.",
+          "Your soldering iron and multimeter are suitable for building and testing circuits."
+        ],
+        "projectBriefMarkdown": "# Automated Night-Activated Lamp Project Brief\n\n## Overview\nBuild a lamp that automatically turns on at night by sensing ambient light with an Arduino and switching the lamp power accordingly.\n\n## Materials and Tools\n- Arduino Uno or Mega (owned)\n- Light sensor (photoresistor recommended)\n- Relay module or transistor suitable for lamp's voltage/current\n- Lamp (low voltage DC recommended for safety) or LED strip\n- Power supply compatible with lamp\n- Wiring, soldering iron, multimeter\n- PLA filament for 3D printed enclosure or mounts\n\n## Steps\n1. **Acquire or prepare a suitable light sensor.**\n2. **Write an Arduino sketch to read ambient light levels and determine night conditions.**\n3. **Set up the relay or transistor to switch lamp power based on sensor readings.**\n4. **Test the circuit on a small lamp or LED to validate switching.**\n5. **Design and 3D print a simple enclosure or holder for the electronics and lamp.**\n6. **Deploy and refine sensitivity and timing as needed.**\n\n## Safety Notes\n- Avoid direct wiring to mains power unless you are fully confident and use proper relay modules.\n- Prefer low voltage DC lamps driven via relay or transistor switches.\n- Always test with a multimeter and disconnect power when soldering.\n\n## Next Best Step\nObtain a photoresistor and a relay module (if not already owned), then prototype a simple Arduino circuit that reads the light sensor and toggles an LED or small lamp. This step will validate the core concept quickly with minimal cost and risk.",
+        "_modelUsed": "gpt-4.1-mini",
+        "_aiProvider": "openai"
+      },
+      "sourcing": {
+        "safe": true,
+        "summary": "This bill of materials includes your already owned Arduino Uno or Mega, and PLA filament for 3D printed enclosures. It adds a photoresistor as an ambient light sensor, a relay module for safe switching of the lamp power, suitable wiring and connectors for connections, and a low-voltage LED lamp as the light source to keep the project safe and simple. Your soldering iron and multimeter will be used for assembly and testing. All selected parts are compatible with your skills and existing tools.",
+        "estimatedTotal": 31.25,
+        "currency": "USD",
+        "items": [
+          {
+            "id": "arduino-unotmega-owned",
+            "name": "Arduino Uno or Mega",
+            "category": "Microcontroller",
+            "required": true,
+            "quantity": 1,
+            "unitPriceEstimate": 0,
+            "vendorHint": "Owned from profile stock",
+            "ownedAlternative": "Already owned",
+            "compatibilityNotes": "Acts as the control unit; compatible with analog light sensors and relay modules. Essential base for project logic and switching.",
+            "difficulty": "Easy",
+            "safetyNotes": "Low voltage device, safe to use.",
+            "sourceStatus": "owned",
+            "orderable": false,
+            "selected": false,
+            "sourceCandidates": [],
+            "selectedSourceIndex": -1,
+            "verificationStatus": "unverified",
+            "pricingStatus": "unknown",
+            "shippingEstimate": 0,
+            "totalPriceEstimate": 0
+          },
+          {
+            "id": "photoresistor-light-sensor",
+            "name": "Photoresistor (LDR)",
+            "category": "Sensor",
+            "required": true,
+            "quantity": 1,
+            "unitPriceEstimate": 2,
+            "vendorHint": "Common electronic parts suppliers",
+            "ownedAlternative": "",
+            "compatibilityNotes": "Connects to Arduino analog input to detect ambient light; very simple and safe sensor type.",
+            "difficulty": "Easy",
+            "safetyNotes": "Passive component with no hazards.",
+            "sourceStatus": "needed",
+            "orderable": true,
+            "selected": true,
+            "sourceCandidates": [
+              {
+                "keywords": [
+                  "arduino",
+                  "microcontroller",
+                  "dev board",
+                  "starter board"
+                ],
+                "supplier": "Blockyby Verified Electronics DB",
+                "productName": "Arduino-Compatible Starter Board",
+                "manufacturer": "DemoParts",
+                "manufacturerPartNumber": "DP-ARD-START",
+                "supplierPartNumber": "BDE-1004",
+                "description": "Beginner-friendly microcontroller board for breadboard prototypes.",
+                "productUrl": "",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 8.25,
+                "currency": "EUR",
+                "stockAvailable": 58,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Demo stock available",
+                "evidenceNotes": "Matched by requested controller type and beginner-friendly prototyping use.",
+                "sourceType": "local_source_database",
+                "verificationStatus": "verified",
+                "verificationMethod": "curated_local_catalogue",
+                "verificationMessage": "Exact demo price verified against the local hackathon source database.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "priceText": "EUR 8.25",
+                "priceConfidence": "exact",
+                "shippingEstimate": 0.0,
+                "shippingText": "Shipping is not included in the hackathon mock checkout.",
+                "shippingConfidence": "not_included",
+                "totalPriceEstimate": 8.25,
+                "matchScore": 1,
+                "lastChecked": "2026-07-03T09:39:22.636058+00:00",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=Photoresistor+%28LDR%29+Sensor",
+                "linkVerification": {
+                  "product": {
+                    "ok": false,
+                    "message": "Local exact-price record; use the supplier search link for real product review."
+                  },
+                  "checkedAt": "2026-07-03T09:39:22.636080+00:00"
+                }
+              },
+              {
+                "supplier": "Digi-Key",
+                "productName": "Digi-Key search for Photoresistor (LDR)",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.digikey.ie/en/products/result?keywords=Photoresistor+%28LDR%29+Sensor",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 4,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=Photoresistor+%28LDR%29+Sensor",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.636509+00:00"
+              },
+              {
+                "supplier": "Mouser",
+                "productName": "Mouser search for Photoresistor (LDR)",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.mouser.ie/c/?q=Photoresistor+%28LDR%29+Sensor",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 3,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.mouser.ie/c/?q=Photoresistor+%28LDR%29+Sensor",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.636565+00:00"
+              }
+            ],
+            "selectedSourceIndex": 0,
+            "verificationStatus": "verified",
+            "pricingStatus": "exact",
+            "shippingEstimate": 0.0,
+            "totalPriceEstimate": 8.25
+          },
+          {
+            "id": "5v-relay-module",
+            "name": "5V Relay Module",
+            "category": "Switching Module",
+            "required": true,
+            "quantity": 1,
+            "unitPriceEstimate": 8,
+            "vendorHint": "Common electronics hobby shops or online",
+            "ownedAlternative": "",
+            "compatibilityNotes": "Enables safe switching of lamp power up to moderate mains voltages or low-voltage loads. Compatible with Arduino output pins.",
+            "difficulty": "Moderate",
+            "safetyNotes": "Use with care; relay isolates control and load circuits.",
+            "sourceStatus": "needed",
+            "orderable": true,
+            "selected": true,
+            "sourceCandidates": [
+              {
+                "keywords": [
+                  "regulated",
+                  "power supply",
+                  "5v",
+                  "usb power"
+                ],
+                "supplier": "Blockyby Verified Electronics DB",
+                "productName": "5V 2A Regulated USB Power Supply",
+                "manufacturer": "DemoPower",
+                "manufacturerPartNumber": "DPP-5V-2A",
+                "supplierPartNumber": "BDE-1003",
+                "description": "Low-voltage regulated supply for small electronics prototypes.",
+                "productUrl": "",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 8.75,
+                "currency": "EUR",
+                "stockAvailable": 31,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Demo stock available",
+                "evidenceNotes": "Matched by low-voltage regulated power requirement. User must still check current draw.",
+                "sourceType": "local_source_database",
+                "verificationStatus": "verified",
+                "verificationMethod": "curated_local_catalogue",
+                "verificationMessage": "Exact demo price verified against the local hackathon source database.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "priceText": "EUR 8.75",
+                "priceConfidence": "exact",
+                "shippingEstimate": 0.0,
+                "shippingText": "Shipping is not included in the hackathon mock checkout.",
+                "shippingConfidence": "not_included",
+                "totalPriceEstimate": 8.75,
+                "matchScore": 2,
+                "lastChecked": "2026-07-03T09:39:22.636811+00:00",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=5V+Relay+Module+Switching+Module",
+                "linkVerification": {
+                  "product": {
+                    "ok": false,
+                    "message": "Local exact-price record; use the supplier search link for real product review."
+                  },
+                  "checkedAt": "2026-07-03T09:39:22.636814+00:00"
+                }
+              },
+              {
+                "keywords": [
+                  "arduino",
+                  "microcontroller",
+                  "dev board",
+                  "starter board"
+                ],
+                "supplier": "Blockyby Verified Electronics DB",
+                "productName": "Arduino-Compatible Starter Board",
+                "manufacturer": "DemoParts",
+                "manufacturerPartNumber": "DP-ARD-START",
+                "supplierPartNumber": "BDE-1004",
+                "description": "Beginner-friendly microcontroller board for breadboard prototypes.",
+                "productUrl": "",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 8.25,
+                "currency": "EUR",
+                "stockAvailable": 58,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Demo stock available",
+                "evidenceNotes": "Matched by requested controller type and beginner-friendly prototyping use.",
+                "sourceType": "local_source_database",
+                "verificationStatus": "verified",
+                "verificationMethod": "curated_local_catalogue",
+                "verificationMessage": "Exact demo price verified against the local hackathon source database.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "priceText": "EUR 8.25",
+                "priceConfidence": "exact",
+                "shippingEstimate": 0.0,
+                "shippingText": "Shipping is not included in the hackathon mock checkout.",
+                "shippingConfidence": "not_included",
+                "totalPriceEstimate": 8.25,
+                "matchScore": 1,
+                "lastChecked": "2026-07-03T09:39:22.636724+00:00",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=5V+Relay+Module+Switching+Module",
+                "linkVerification": {
+                  "product": {
+                    "ok": false,
+                    "message": "Local exact-price record; use the supplier search link for real product review."
+                  },
+                  "checkedAt": "2026-07-03T09:39:22.636728+00:00"
+                }
+              },
+              {
+                "supplier": "Digi-Key",
+                "productName": "Digi-Key search for 5V Relay Module",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.digikey.ie/en/products/result?keywords=5V+Relay+Module+Switching+Module",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 4,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=5V+Relay+Module+Switching+Module",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.637301+00:00"
+              },
+              {
+                "supplier": "Mouser",
+                "productName": "Mouser search for 5V Relay Module",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.mouser.ie/c/?q=5V+Relay+Module+Switching+Module",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 3,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.mouser.ie/c/?q=5V+Relay+Module+Switching+Module",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.637315+00:00"
+              }
+            ],
+            "selectedSourceIndex": 0,
+            "verificationStatus": "verified",
+            "pricingStatus": "exact",
+            "shippingEstimate": 0.0,
+            "totalPriceEstimate": 8.75
+          },
+          {
+            "id": "low-voltage-led-lamp",
+            "name": "12V LED Lamp or LED Strip",
+            "category": "Lighting",
+            "required": true,
+            "quantity": 1,
+            "unitPriceEstimate": 10,
+            "vendorHint": "Electronics or lighting stores",
+            "ownedAlternative": "",
+            "compatibilityNotes": "Safe low voltage lamp option to be switched by relay; easy to power with suitable supply.",
+            "difficulty": "Easy",
+            "safetyNotes": "Low voltage DC; safer than mains lamps.",
+            "sourceStatus": "needed",
+            "orderable": true,
+            "selected": true,
+            "sourceCandidates": [
+              {
+                "keywords": [
+                  "led",
+                  "resistor",
+                  "assortment",
+                  "indicator"
+                ],
+                "supplier": "Blockyby Verified Electronics DB",
+                "productName": "LED and Resistor Starter Assortment",
+                "manufacturer": "DemoParts",
+                "manufacturerPartNumber": "DP-LED-RES",
+                "supplierPartNumber": "BDE-1005",
+                "description": "Basic indicator LEDs and common resistor values for safe low-voltage tests.",
+                "productUrl": "",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 6.0,
+                "currency": "EUR",
+                "stockAvailable": 94,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Demo stock available",
+                "evidenceNotes": "Matched by visual indicator and electronics debugging requirement.",
+                "sourceType": "local_source_database",
+                "verificationStatus": "verified",
+                "verificationMethod": "curated_local_catalogue",
+                "verificationMessage": "Exact demo price verified against the local hackathon source database.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "priceText": "EUR 6.00",
+                "priceConfidence": "exact",
+                "shippingEstimate": 0.0,
+                "shippingText": "Shipping is not included in the hackathon mock checkout.",
+                "shippingConfidence": "not_included",
+                "totalPriceEstimate": 6.0,
+                "matchScore": 2,
+                "lastChecked": "2026-07-03T09:39:22.637614+00:00",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=12V+LED+Lamp+or+LED+Strip+Lighting",
+                "linkVerification": {
+                  "product": {
+                    "ok": false,
+                    "message": "Local exact-price record; use the supplier search link for real product review."
+                  },
+                  "checkedAt": "2026-07-03T09:39:22.637618+00:00"
+                }
+              },
+              {
+                "supplier": "Digi-Key",
+                "productName": "Digi-Key search for 12V LED Lamp or LED Strip",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.digikey.ie/en/products/result?keywords=12V+LED+Lamp+or+LED+Strip+Lighting",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 4,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=12V+LED+Lamp+or+LED+Strip+Lighting",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.637887+00:00"
+              },
+              {
+                "supplier": "Mouser",
+                "productName": "Mouser search for 12V LED Lamp or LED Strip",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.mouser.ie/c/?q=12V+LED+Lamp+or+LED+Strip+Lighting",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 3,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.mouser.ie/c/?q=12V+LED+Lamp+or+LED+Strip+Lighting",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.637911+00:00"
+              }
+            ],
+            "selectedSourceIndex": 0,
+            "verificationStatus": "verified",
+            "pricingStatus": "exact",
+            "shippingEstimate": 0.0,
+            "totalPriceEstimate": 6.0
+          },
+          {
+            "id": "wiring-materials",
+            "name": "Wiring, Connectors, and Soldering Materials",
+            "category": "Electrical",
+            "required": true,
+            "quantity": 1,
+            "unitPriceEstimate": 5,
+            "vendorHint": "Local hardware or electronics stores",
+            "ownedAlternative": "",
+            "compatibilityNotes": "Necessary for connecting sensor, relay, lamp, and Arduino; compatible with your soldering skills and tools.",
+            "difficulty": "Moderate",
+            "safetyNotes": "Ensure proper insulation and secure connections for safety.",
+            "sourceStatus": "partially owned",
+            "orderable": true,
+            "selected": true,
+            "sourceCandidates": [
+              {
+                "keywords": [
+                  "arduino",
+                  "microcontroller",
+                  "dev board",
+                  "starter board"
+                ],
+                "supplier": "Blockyby Verified Electronics DB",
+                "productName": "Arduino-Compatible Starter Board",
+                "manufacturer": "DemoParts",
+                "manufacturerPartNumber": "DP-ARD-START",
+                "supplierPartNumber": "BDE-1004",
+                "description": "Beginner-friendly microcontroller board for breadboard prototypes.",
+                "productUrl": "",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 8.25,
+                "currency": "EUR",
+                "stockAvailable": 58,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Demo stock available",
+                "evidenceNotes": "Matched by requested controller type and beginner-friendly prototyping use.",
+                "sourceType": "local_source_database",
+                "verificationStatus": "verified",
+                "verificationMethod": "curated_local_catalogue",
+                "verificationMessage": "Exact demo price verified against the local hackathon source database.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "priceText": "EUR 8.25",
+                "priceConfidence": "exact",
+                "shippingEstimate": 0.0,
+                "shippingText": "Shipping is not included in the hackathon mock checkout.",
+                "shippingConfidence": "not_included",
+                "totalPriceEstimate": 8.25,
+                "matchScore": 1,
+                "lastChecked": "2026-07-03T09:39:22.638035+00:00",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=Wiring%2C+Connectors%2C+and+Soldering+Materials+Electrical",
+                "linkVerification": {
+                  "product": {
+                    "ok": false,
+                    "message": "Local exact-price record; use the supplier search link for real product review."
+                  },
+                  "checkedAt": "2026-07-03T09:39:22.638039+00:00"
+                }
+              },
+              {
+                "supplier": "Digi-Key",
+                "productName": "Digi-Key search for Wiring, Connectors, and Soldering Materials",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.digikey.ie/en/products/result?keywords=Wiring%2C+Connectors%2C+and+Soldering+Materials+Electrical",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 4,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.digikey.ie/en/products/result?keywords=Wiring%2C+Connectors%2C+and+Soldering+Materials+Electrical",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.638533+00:00"
+              },
+              {
+                "supplier": "Mouser",
+                "productName": "Mouser search for Wiring, Connectors, and Soldering Materials",
+                "manufacturer": "",
+                "manufacturerPartNumber": "",
+                "supplierPartNumber": "",
+                "description": "Supplier search page. Open it to choose a concrete product and confirm final price, stock, and shipping.",
+                "productUrl": "https://www.mouser.ie/c/?q=Wiring%2C+Connectors%2C+and+Soldering+Materials+Electrical",
+                "datasheetUrl": "",
+                "imageUrl": "",
+                "unitPrice": 0,
+                "currency": "EUR",
+                "priceText": "Unknown until a specific supplier product/API price is selected.",
+                "priceConfidence": "unknown",
+                "shippingEstimate": 0,
+                "shippingText": "Unknown until checkout or supplier delivery information is available.",
+                "shippingConfidence": "unknown",
+                "totalPriceEstimate": 0,
+                "stockAvailable": null,
+                "minimumOrderQuantity": 1,
+                "leadTime": "Check supplier page",
+                "sourceType": "supplier_search",
+                "matchScore": 3,
+                "evidenceNotes": "Generated from a trusted supplier search URL template. It is a review link, not a checkout-ready price.",
+                "sourceSearchUrl": "https://www.mouser.ie/c/?q=Wiring%2C+Connectors%2C+and+Soldering+Materials+Electrical",
+                "verificationStatus": "needs_review",
+                "verificationMethod": "supplier_search_template",
+                "verificationMessage": "Open the supplier search page and pick a specific product before real checkout.",
+                "productUrlVerified": false,
+                "datasheetUrlVerified": false,
+                "lastChecked": "2026-07-03T09:39:22.638550+00:00"
+              }
+            ],
+            "selectedSourceIndex": 0,
+            "verificationStatus": "verified",
+            "pricingStatus": "exact",
+            "shippingEstimate": 0.0,
+            "totalPriceEstimate": 8.25
+          },
+          {
+            "id": "pla-filament-owned",
+            "name": "PLA Filament",
+            "category": "Material",
+            "required": false,
+            "quantity": 1,
+            "unitPriceEstimate": 0,
+            "vendorHint": "Owned from profile stock",
+            "ownedAlternative": "Already owned",
+            "compatibilityNotes": "Used to 3D print enclosure or holders to tidy components; compatible with your tools and skills.",
+            "difficulty": "Easy",
+            "safetyNotes": "Safe thermoplastic material for enclosures only.",
+            "sourceStatus": "owned",
+            "orderable": false,
+            "selected": false,
+            "sourceCandidates": [],
+            "selectedSourceIndex": -1,
+            "verificationStatus": "unverified",
+            "pricingStatus": "unknown",
+            "shippingEstimate": 0,
+            "totalPriceEstimate": 0
+          }
+        ],
+        "existingAssets": [
+          {
+            "title": "Arduino Uno",
+            "type": "Microcontroller",
+            "licenseHint": "N/A",
+            "description": "Available hardware to run night lamp control program",
+            "sourceHint": "Owned",
+            "viewAction": ""
+          },
+          {
+            "title": "Arduino Mega",
+            "type": "Microcontroller",
+            "licenseHint": "N/A",
+            "description": "Alternative Arduino available for larger projects",
+            "sourceHint": "Owned",
+            "viewAction": ""
+          },
+          {
+            "title": "PLA",
+            "type": "Material",
+            "licenseHint": "N/A",
+            "description": "3D printing filament for enclosure",
+            "sourceHint": "Owned",
+            "viewAction": ""
+          },
+          {
+            "title": "MPU6050",
+            "type": "Sensor",
+            "licenseHint": "N/A",
+            "description": "Accelerometer/Gyroscope sensor, not used in this project",
+            "sourceHint": "Owned",
+            "viewAction": ""
+          }
+        ],
+        "compatibilityNotes": [
+          "Arduino Uno or Mega are compatible with analog photoresistor sensors.",
+          "Photoresistors connect directly to Arduino analog inputs with simple voltage divider.",
+          "Relay module allows safe switching of lamps, compatible with 5V Arduino outputs.",
+          "Low voltage DC LED lamp is safer to switch and power than mains voltage lamps.",
+          "PLA filament is suitable for printing enclosures; keeps electronics tidy and safe.",
+          "Your soldering iron and multimeter support correct assembly and testing."
+        ],
+        "sourcingDifficulty": "Low",
+        "orderWarnings": [
+          "Relay modules must be matched to lamp voltage and load current.",
+          "Ensure wiring insulation and safe enclosure to avoid short circuits or exposure.",
+          "Relay switching of mains power requires proper isolation and caution; low voltage recommended."
+        ],
+        "_modelUsed": "gpt-4.1-mini",
+        "_aiProvider": "openai",
+        "dataVersion": "merged-local-exact-plus-live-links-v3",
+        "verificationSummary": {
+          "verifiedCount": 4,
+          "unverifiedCount": 0,
+          "ownedCount": 2,
+          "linksReady": true,
+          "checkoutReady": true,
+          "sourceMode": "local exact catalogue + supplier search links + optional live web verification",
+          "pricedCount": 4,
+          "unknownPriceCount": 0,
+          "pricingNote": "Mock checkout totals use exact selected source-card prices only. Supplier search and web-search links are review aids, not price evidence."
+        }
+      },
+      "instructions": {
+        "safe": true,
+        "title": "Desk Plant Monitor with Moisture Sensor and LEDs",
+        "intro": "Build a desk plant moisture monitor using Arduino Uno or Mega to prototype moisture sensing and LED status indication. Use PLA filament to 3D print a simple enclosure. Later transition to ESP32 for wireless features.",
+        "safetyBeforeStart": [
+          "Ensure workspace is clean and well-ventilated for soldering and 3D printing.",
+          "Use low-voltage power supplies only to avoid electric shock.",
+          "Wear protective eyewear and gloves when soldering.",
+          "Verify all components are compatible with Arduino voltage levels.",
+          "Keep liquids away from electronics during testing."
+        ],
+        "pages": [
+          {
+            "pageNumber": 1,
+            "title": "Prepare Components and Workspace",
+            "purpose": "Gather and verify all necessary parts and tools before assembly.",
+            "partsNeeded": [
+              "Arduino Uno or Mega",
+              "Soil moisture sensor compatible with Arduino",
+              "Status LEDs (assorted colors)",
+              "Resistors for LEDs",
+              "Breadboard and jumper wires",
+              "Soldering iron and multimeter",
+              "PLA filament for enclosure"
+            ],
+            "actions": [
+              "Collect Arduino board and moisture sensor.",
+              "Select LEDs and matching resistors.",
+              "Set up breadboard and jumper wires.",
+              "Check that soldering tools and multimeter are functional."
+            ],
+            "checks": [
+              "Verify moisture sensor voltage and pin compatibility with Arduino.",
+              "Check LEDs and resistor ratings match Arduino output pins.",
+              "Ensure PLA filament is compatible with 3D printer settings."
+            ],
+            "animationCue": "Show layout of components on workbench with labels.",
+            "helpPrompt": "Need help verifying component compatibility or test setup?",
+            "diagram": {
+              "type": "graph",
+              "title": "Basic Components Overview",
+              "nodes": [
+                {
+                  "id": "Arduino",
+                  "label": "Arduino Uno/Mega",
+                  "x": 50,
+                  "y": 50
+                },
+                {
+                  "id": "Sensor",
+                  "label": "Moisture Sensor",
+                  "x": 150,
+                  "y": 50
+                },
+                {
+                  "id": "LEDs",
+                  "label": "Status LEDs & Resistors",
+                  "x": 100,
+                  "y": 120
+                },
+                {
+                  "id": "Tools",
+                  "label": "Soldering Iron & Multimeter",
+                  "x": 50,
+                  "y": 150
+                },
+                {
+                  "id": "PLA",
+                  "label": "PLA Filament",
+                  "x": 150,
+                  "y": 150
+                }
+              ],
+              "edges": [
+                {
+                  "from": "Arduino",
+                  "to": "Sensor",
+                  "label": "Connect sensor pins"
+                },
+                {
+                  "from": "Arduino",
+                  "to": "LEDs",
+                  "label": "Control LED outputs"
+                }
+              ],
+              "callouts": [
+                {
+                  "text": "Gather all parts before starting to reduce interruptions.",
+                  "x": 80,
+                  "y": 20
+                }
+              ]
+            }
+          },
+          {
+            "pageNumber": 2,
+            "title": "Prototype Sensor and LED Circuit on Breadboard",
+            "purpose": "Build a temporary circuit to read moisture data and display status via LEDs.",
+            "partsNeeded": [
+              "Arduino Uno or Mega",
+              "Moisture sensor",
+              "Status LEDs",
+              "Resistors",
+              "Breadboard",
+              "Jumper wires"
+            ],
+            "actions": [
+              "Insert Arduino and moisture sensor onto breadboard or connect with jumper wires.",
+              "Connect moisture sensor output to Arduino analog input pin.",
+              "Wire LEDs with resistors to Arduino digital output pins.",
+              "Upload test sketch to read moisture level and light LEDs accordingly."
+            ],
+            "checks": [
+              "Confirm sensor output reads varying analog values under different moisture conditions using serial monitor.",
+              "Verify LEDs light correctly according to programmed thresholds (dry, moist, wet).",
+              "Ensure no short circuits or loose connections with multimeter."
+            ],
+            "animationCue": "Show breadboard wiring and LED states changing based on sensor input.",
+            "helpPrompt": "Need a sample Arduino sketch or help with wiring?",
+            "diagram": {
+              "type": "graph",
+              "title": "Prototype Circuit Connections",
+              "nodes": [
+                {
+                  "id": "Arduino",
+                  "label": "Arduino",
+                  "x": 50,
+                  "y": 50
+                },
+                {
+                  "id": "Sensor",
+                  "label": "Moisture Sensor",
+                  "x": 150,
+                  "y": 50
+                },
+                {
+                  "id": "LED1",
+                  "label": "LED Dry (Red)",
+                  "x": 100,
+                  "y": 20
+                },
+                {
+                  "id": "LED2",
+                  "label": "LED Moist (Yellow)",
+                  "x": 100,
+                  "y": 50
+                },
+                {
+                  "id": "LED3",
+                  "label": "LED Wet (Green)",
+                  "x": 100,
+                  "y": 80
+                }
+              ],
+              "edges": [
+                {
+                  "from": "Sensor",
+                  "to": "Arduino",
+                  "label": "Analog Input A0"
+                },
+                {
+                  "from": "Arduino",
+                  "to": "LED1",
+                  "label": "Digital Pin D2"
+                },
+                {
+                  "from": "Arduino",
+                  "to": "LED2",
+                  "label": "Digital Pin D3"
+                },
+                {
+                  "from": "Arduino",
+                  "to": "LED3",
+                  "label": "Digital Pin D4"
+                }
+              ],
+              "callouts": [
+                {
+                  "text": "Use resistors (220-330Ω) in series with LEDs to limit current.",
+                  "x": 120,
+                  "y": 10
+                }
+              ]
+            }
+          },
+          {
+            "pageNumber": 3,
+            "title": "Test Functional Prototype",
+            "purpose": "Verify sensor readings and LED feedback are accurate and consistent.",
+            "partsNeeded": [
+              "Half-assembled prototype from previous step",
+              "Multimeter"
+            ],
+            "actions": [
+              "Run Arduino sketch that reads moisture sensor and controls LEDs.",
+              "Use dry and wet soil samples to test sensor response.",
+              "Observe LED indication for each soil condition.",
+              "Measure sensor output voltage with multimeter for consistency."
+            ],
+            "checks": [
+              "LED feedback matches expected moisture levels.",
+              "Sensor readings change appropriately with moisture variation.",
+              "No overheating or abnormal behavior during continuous test."
+            ],
+            "animationCue": "Show transition of LED colors as sensor detects moisture changes.",
+            "helpPrompt": "Troubleshooting tips if LEDs do not respond as expected.",
+            "diagram": {
+              "type": "flowchart",
+              "title": "Testing Workflow",
+              "nodes": [
+                {
+                  "id": "Start",
+                  "label": "Power On Prototype",
+                  "x": 60,
+                  "y": 20
+                },
+                {
+                  "id": "ReadSensor",
+                  "label": "Read Moisture Sensor",
+                  "x": 60,
+                  "y": 60
+                },
+                {
+                  "id": "CheckDry",
+                  "label": "Is soil dry?",
+                  "x": 120,
+                  "y": 100
+                },
+                {
+                  "id": "LEDRed",
+                  "label": "Light Red LED",
+                  "x": 180,
+                  "y": 100
+                },
+                {
+                  "id": "CheckWet",
+                  "label": "Is soil wet?",
+                  "x": 60,
+                  "y": 140
+                },
+                {
+                  "id": "LEDGreen",
+                  "label": "Light Green LED",
+                  "x": 120,
+                  "y": 140
+                },
+                {
+                  "id": "LEDYellow",
+                  "label": "Light Yellow LED",
+                  "x": 180,
+                  "y": 140
+                },
+                {
+                  "id": "LoopBack",
+                  "label": "Repeat",
+                  "x": 60,
+                  "y": 180
+                }
+              ],
+              "edges": [
+                {
+                  "from": "Start",
+                  "to": "ReadSensor",
+                  "label": ""
+                },
+                {
+                  "from": "ReadSensor",
+                  "to": "CheckDry",
+                  "label": ""
+                },
+                {
+                  "from": "CheckDry",
+                  "to": "LEDRed",
+                  "label": "Yes"
+                },
+                {
+                  "from": "CheckDry",
+                  "to": "CheckWet",
+                  "label": "No"
+                },
+                {
+                  "from": "CheckWet",
+                  "to": "LEDGreen",
+                  "label": "Yes"
+                },
+                {
+                  "from": "CheckWet",
+                  "to": "LEDYellow",
+                  "label": "No"
+                },
+                {
+                  "from": "LEDRed",
+                  "to": "LoopBack",
+                  "label": ""
+                },
+                {
+                  "from": "LEDGreen",
+                  "to": "LoopBack",
+                  "label": ""
+                },
+                {
+                  "from": "LEDYellow",
+                  "to": "LoopBack",
+                  "label": ""
+                }
+              ],
+              "callouts": [
+                {
+                  "text": "Monitor LED responses carefully during testing phases.",
+                  "x": 200,
+                  "y": 160
+                }
+              ]
+            }
+          },
+          {
+            "pageNumber": 4,
+            "title": "Design and 3D Print Enclosure",
+            "purpose": "Create a minimal enclosure to house the prototype for protection and presentation.",
+            "partsNeeded": [
+              "3D printer",
+              "PLA filament",
+              "CAD file/template for enclosure",
+              "M3 screws and spacers"
+            ],
+            "actions": [
+              "Measure prototype dimensions using calipers.",
+              "Adjust CAD enclosure template to fit components with clearance.",
+              "Slice and 3D print enclosure parts using PLA filament.",
+              "Assemble enclosure around electronics using M3 screws and spacers."
+            ],
+            "checks": [
+              "Ensure all connectors and LEDs are visible and accessible.",
+              "Check enclosure fits snugly without forcing.",
+              "Verify ventilation and moisture sensor access if required.",
+              "Avoid sharp edges and ensure no short circuit risk."
+            ],
+            "animationCue": "Show stepwise assembly of enclosure around PCB and sensor.",
+            "helpPrompt": "Offer CAD template modification tips or 3D printing parameter advice.",
+            "diagram": {
+              "type": "graph",
+              "title": "Enclosure Design Elements",
+              "nodes": [
+                {
+                  "id": "Prototype",
+                  "label": "Assembled Electronics",
+                  "x": 50,
+                  "y": 50
+                },
+                {
+                  "id": "CADModel",
+                  "label": "Modify CAD for Fit",
+                  "x": 150,
+                  "y": 50
+                },
+                {
+                  "id": "3DPrint",
+                  "label": "3D Print Parts",
+                  "x": 250,
+                  "y": 50
+                },
+                {
+                  "id": "Assembly",
+                  "label": "Assemble with Screws",
+                  "x": 150,
+                  "y": 120
+                }
+              ],
+              "edges": [
+                {
+                  "from": "Prototype",
+                  "to": "CADModel",
+                  "label": "Measure dimensions"
+                },
+                {
+                  "from": "CADModel",
+                  "to": "3DPrint",
+                  "label": "Export STL and slice"
+                },
+                {
+                  "from": "3DPrint",
+                  "to": "Assembly",
+                  "label": "Print and clean parts"
+                },
+                {
+                  "from": "Prototype",
+                  "to": "Assembly",
+                  "label": "Place inside enclosure"
+                }
+              ],
+              "callouts": [
+                {
+                  "text": "Confirm M3 hardware sizes match screw holes.",
+                  "x": 200,
+                  "y": 90
+                }
+              ]
+            }
+          },
+          {
+            "pageNumber": 5,
+            "title": "Prepare for Future ESP32 Upgrade",
+            "purpose": "Plan code and hardware changes to migrate to ESP32 for wireless features later.",
+            "partsNeeded": [
+              "ESP32 development board (optional)"
+            ],
+            "actions": [
+              "Review Arduino sketch for ESP32 compatibility (e.g., pin mapping, voltage levels).",
+              "Research libraries for Wi-Fi and data transmission features.",
+              "Test sensor wiring compatibility with ESP32 pins.",
+              "Note power supply considerations and pin assignments."
+            ],
+            "checks": [
+              "Ensure code compiles under ESP32 environment.",
+              "Validate sensor voltage compatibility (3.3V on ESP32).",
+              "Plan enclosure modifications for ESP32 board size and connectors."
+            ],
+            "animationCue": "Highlight differences between Arduino and ESP32 platforms.",
+            "helpPrompt": "Provide ESP32 example code snippets or wiring diagrams.",
+            "diagram": {
+              "type": "graph",
+              "title": "ESP32 Upgrade Planning",
+              "nodes": [
+                {
+                  "id": "Arduino",
+                  "label": "Arduino Uno/Mega",
+                  "x": 50,
+                  "y": 50
+                },
+                {
+                  "id": "ESP32",
+                  "label": "ESP32 Board",
+                  "x": 150,
+                  "y": 50
+                },
+                {
+                  "id": "Code",
+                  "label": "Firmware Code",
+                  "x": 100,
+                  "y": 100
+                },
+                {
+                  "id": "Sensor",
+                  "label": "Moisture Sensor",
+                  "x": 50,
+                  "y": 150
+                },
+                {
+                  "id": "LEDs",
+                  "label": "Status LEDs",
+                  "x": 150,
+                  "y": 150
+                }
+              ],
+              "edges": [
+                {
+                  "from": "Arduino",
+                  "to": "Code",
+                  "label": "Original code target"
+                },
+                {
+                  "from": "ESP32",
+                  "to": "Code",
+                  "label": "Adapt code for ESP32"
+                },
+                {
+                  "from": "Sensor",
+                  "to": "Arduino",
+                  "label": "Wired for 5V Arduino"
+                },
+                {
+                  "from": "Sensor",
+                  "to": "ESP32",
+                  "label": "Check 3.3V compatibility"
+                },
+                {
+                  "from": "Code",
+                  "to": "LEDs",
+                  "label": "Control signals"
+                }
+              ],
+              "callouts": [
+                {
+                  "text": "ESP32 uses 3.3V logic; adjust voltage levels if needed.",
+                  "x": 120,
+                  "y": 120
+                }
+              ]
+            }
+          }
+        ],
+        "testPlan": [
+          "Verify moisture sensor outputs expected analog levels under moisture changes on Arduino.",
+          "Check LEDs light correctly according to moisture thresholds.",
+          "Confirm stable operation during continuous sensor readings and LED updates.",
+          "Inspect solder joints and wiring for reliability and safety.",
+          "Test 3D printed enclosure fit, ensuring sensor and LEDs are accessible.",
+          "Prepare prototype for hackathon demo on Arduino platform first."
+        ],
+        "troubleshooting": [
+          "If sensor outputs no or constant values, check wiring and sensor power supply.",
+          "LEDs not lighting: verify resistor values and connections.",
+          "Use multimeter to check voltage levels on sensor and Arduino pins.",
+          "If Arduino sketch fails to upload, check USB connection and drivers.",
+          "For enclosure fit issues, re-measure components and adjust CAD template."
+        ],
+        "helpPrompts": [
+          "Would you like example Arduino code for sensor reading and LED control?",
+          "Need guidance on soldering sensor or LED connections?",
+          "Require assistance with 3D printing enclosure or CAD modifications?",
+          "Interested in ESP32 migration tutorials after hackathon?"
+        ],
+        "_modelUsed": "gpt-4.1-mini",
+        "_aiProvider": "openai"
+      },
+      "visibility": "private",
+      "createdAt": "2026-07-03T09:39:22.638631+00:00",
+      "updatedAt": "2026-07-03T09:39:22.638634+00:00"
+    }
+  ],
+  "orders": []
+}
